@@ -1,0 +1,72 @@
+def SIGA(informacoes: tuple) -> tuple:
+    """
+    Calcula a média das notas de um aluno e determina sua situação.
+
+    Args:
+        informacoes (tuple): Uma tupla contendo o nome do aluno e suas três notas.
+
+    Returns:
+        tuple: Uma tupla contendo o nome do aluno, a média e a situação do aluno.
+    """
+    # Extrai as informações da tupla de entrada
+    nome_aluno = informacoes[0]
+    notas = informacoes[1:]
+    # Calcula a média das notas
+    media = sum(notas) / len(notas)
+    # Determina a situação do aluno com base na média
+    if media >= 7:
+        situacao = 'aprovado'
+        mensagem = 'Parabéns!'
+    elif media >= 5:
+        situacao = 'aprovado'
+        mensagem = None
+    else:
+        situacao = 'reprovado'
+        mensagem = None
+    # Retorna uma tupla com o nome do aluno, a média e a situação
+    if mensagem:
+        return (nome_aluno, round(media, 1), situacao, mensagem)
+    else:
+        return (nome_aluno, round(media, 1), situacao)
+# Teste da função com entrada fornecida pelo usuário
+nome = input("Digite o nome do aluno: ")
+nota1 = float(input("Digite a primeira nota: "))
+nota2 = float(input("Digite a segunda nota: "))
+nota3 = float(input("Digite a terceira nota: "))
+# Chama a função SIGA com as informações fornecidas e imprime o resultado
+resultado = SIGA((nome, nota1, nota2, nota3))
+print("Resultado:", resultado)
+
+
+import math
+def quadrante(angulo: float, em_graus: bool) -> int:
+    """
+    Determina em qual quadrante um ângulo se encontra.
+
+    Argumentos:
+        angulo (float): O ângulo em questão.
+        em_graus (bool): Indica se o ângulo foi medido em graus (True) ou radianos (False).
+
+    Retorno:
+        int: Um inteiro entre 1 e 4 representando o quadrante em que o ângulo se encontra.
+    """
+    if em_graus:
+       # Converte o ângulo para radianos se estiver em graus
+
+        angulo = math.radians(angulo)
+        # Calcula o quadrante com base no ângulo
+        if angulo < math.pi / 2:
+            return 1
+        elif angulo < math.pi:
+            return 2
+        elif angulo > 3*math.pi/2:
+            return 4
+        else:
+            return 3
+
+# Teste da função com entrada fornecida pelo usuário
+angulo = float(input("Digite o ângulo: "))
+em_graus = input("O ângulo foi medido em graus? (S/N): ").upper() == 'S'
+resultado = quadrante(angulo, em_graus)
+print("Resultado:", resultado)
+
